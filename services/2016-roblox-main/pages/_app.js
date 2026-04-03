@@ -18,6 +18,7 @@ import GlobalAlert from '../components/globalAlert';
 import ThumbnailStore from "../stores/thumbnailStore";
 import getFlag from "../lib/getFlag";
 import Chat from "../components/chat";
+import { JssProvider, createGenerateId } from 'react-jss';
 
 if (typeof window !== 'undefined') {
   console.log(String.raw`
@@ -43,6 +44,8 @@ if (typeof window !== 'undefined') {
      https://en.help.roblox.com/hc/en-us/articles/203313380-Account-Security-Theft-Keeping-your-Account-Safe-`);
 }
 
+const generateId = createGenerateId();
+
 function RobloxApp({ Component, pageProps }) {
   // set theme:
   // jss globals apparently don't support parameters/props, so the only way to do a dynamic global style is to either append a <style> element, use setAttribute(), or append a css file.
@@ -56,7 +59,8 @@ function RobloxApp({ Component, pageProps }) {
     }
   }, [pageProps]);
 
-  return <div>
+  return <JssProvider generateId={generateId}>
+    <div>
     <Head>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin={''} />
@@ -81,6 +85,7 @@ function RobloxApp({ Component, pageProps }) {
       <Footer/>
     </AuthenticationStore.Provider>
   </div>
+  </JssProvider>
 }
 
 export default RobloxApp;
