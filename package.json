@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "npm --prefix services/2016-roblox-main install && npm --prefix services/2016-roblox-main run dev",
-    "build": "npm --prefix services/2016-roblox-main run build",
-    "start": "npm --prefix services/2016-roblox-main run start"
+    "dev": "pnpm --filter 2016-roblox-main run dev",
+    "build": "pnpm --filter 2016-roblox-main run build",
+    "start": "pnpm --filter 2016-roblox-main run start"
   }
 }
